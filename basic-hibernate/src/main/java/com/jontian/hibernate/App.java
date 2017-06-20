@@ -28,13 +28,13 @@ public class App implements CommandLineRunner {
         //查
         Account acct = accountRepository.findAll().get(0);
         System.out.println(String.format("Account after creation: %s, %s, %s, %s, %s, %s",
-                acct.id, acct.userName, acct.birthDate, acct.balance, acct.gender, acct.bankrupt));
+                acct.id, acct.name, acct.birthDate, acct.balance, acct.gender, acct.bankrupt));
 
         //改
-        acct.userName = "newName";
+        acct.name = "newName";
         accountRepository.save(acct);
         acct = accountRepository.findAll().get(0);
-        System.out.println("UserName after update: "+acct.userName);
+        System.out.println("UserName after update: "+acct.name);
 
         //删
         accountRepository.delete(acct);

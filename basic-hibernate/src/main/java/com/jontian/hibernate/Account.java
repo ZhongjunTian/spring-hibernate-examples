@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-@Entity(name = "account")
+@Entity
 public class Account {
     @Id
     @GeneratedValue
     Long id;
 
     @Column(name = "userName")
-    String userName;
+    String name;
 
     Date birthDate;
 
@@ -24,7 +24,7 @@ public class Account {
 
     public static Account createAccount(){
         Account acct = new Account();
-        acct.userName = "Foo";
+        acct.name = "Foo";
         acct.birthDate = new Date(System.currentTimeMillis());
         acct.balance = BigDecimal.valueOf(-1);
         acct.gender = 'M';
