@@ -3,7 +3,5 @@ CREATE TABLE ACCOUNT (
 	user_name varchar(255) not null,
 	birth_date DATETIME null,
     balance decimal null,
-    gender char(1) null,
-	create_date DATETIME null,
-	update_date DATETIME null
+    gender char(1) null
 );
