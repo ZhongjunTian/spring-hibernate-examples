@@ -13,19 +13,37 @@ import java.util.List;
  */
 @SpringBootApplication
 @Component
-public class App implements CommandLineRunner{
-    public static void main(String args[]){
-        SpringApplication.run(App.class);
+public class App implements CommandLineRunner {
+
+    @Autowired
+    AccountRepository accountRepository;
+
+    public void run(String... strings) throws Exception {
+        System.out.println("Start!");
+        //增
+        Account account = Account.createAccount();
+        accountRepository.save(account);
+        System.out.println();
+
+        //查
+        Account acct = accountRepository.findAll().get(0);
+        System.out.println(String.format("Account after creation: %s, %s, %s, %s, %s, %s",
+                acct.id, acct.userName, acct.birthDate, acct.balance, acct.gender, acct.bankrupt));
+
+        //改
+        acct.userName = "newName";
+        accountRepository.save(acct);
+        acct = accountRepository.findAll().get(0);
+        System.out.println("UserName after update: "+acct.userName);
+
+        //删
+        accountRepository.delete(acct);
+        List<Account> accounts = accountRepository.findAll();
+        System.out.println("Size after deletion: "+ accounts.size());
+
     }
 
-    @Autowired AccountRepository accountRepository;
-    public void run(String... strings) throws Exception {
-        List<Account> accts = accountRepository.findAll();
-        System.out.println("******* total accounts: "+accts.size());
-        accountRepository.save(new Account());
-        accts = accountRepository.findAll();
-        Account acct = accts.get(0);
-        System.out.println("******* total accounts: "+accts.size());
-        System.out.println(String.format("%s, %s, %s, %s, %s, %s",acct.id, acct.userName,acct.balance, acct.birthDate, acct.gender,acct.bankrupt));
+    public static void main(String args[]) {
+        SpringApplication.run(App.class);
     }
 }
