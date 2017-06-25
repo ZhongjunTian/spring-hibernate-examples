@@ -13,6 +13,7 @@ public class Account {
     @Column(name = "userName")
     String name;
 
+    @Temporal(TemporalType.TIMESTAMP)
     Date birthDate;
 
     BigDecimal balance;
@@ -22,7 +23,7 @@ public class Account {
     @Transient
     boolean bankrupt;
 
-    public static Account createAccount(){
+    public static Account createAccount() {
         Account acct = new Account();
         acct.name = "Foo";
         acct.birthDate = new Date(System.currentTimeMillis());
