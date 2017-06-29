@@ -23,23 +23,23 @@ public class App implements CommandLineRunner {
         //增
         Account account = Account.createAccount();
         accountRepository.save(account);
-        System.out.println();
+        System.err.println();
 
         //查
         Account acct = accountRepository.findAll().get(0);
-        System.out.println(String.format("Account after creation: %s, %s, %s, %s, %s, %s",
-                acct.id, acct.name, acct.birthDate, acct.balance, acct.gender, acct.bankrupt));
+        System.err.println(String.format("Account after creation: %s, %s, %s, %s, %s, %s, %s",
+                acct.id, acct.name, acct.birthDate, acct.balance, acct.gender, acct.bankrupt, acct.clob));
 
         //改
         acct.name = "newName";
         accountRepository.save(acct);
         acct = accountRepository.findAll().get(0);
-        System.out.println("UserName after update: "+acct.name);
+        System.err.println("UserName after update: "+acct.name);
 
         //删
         accountRepository.delete(acct);
         List<Account> accounts = accountRepository.findAll();
-        System.out.println("Size after deletion: "+ accounts.size());
+        System.err.println("Size after deletion: "+ accounts.size());
 
     }
 

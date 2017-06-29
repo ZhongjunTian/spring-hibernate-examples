@@ -2,7 +2,7 @@ package com.jontian.hibernate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 public class Account {
@@ -23,6 +23,9 @@ public class Account {
     @Transient
     boolean bankrupt;
 
+    @Lob
+    String clob;
+
     public static Account createAccount() {
         Account acct = new Account();
         acct.name = "Foo";
@@ -30,6 +33,7 @@ public class Account {
         acct.balance = BigDecimal.valueOf(-1);
         acct.gender = 'M';
         acct.bankrupt = true;
+        acct.clob = "hello world";
         return acct;
     }
 }
