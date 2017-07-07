@@ -1,4 +1,4 @@
-package com.jontian.hibernate;
+package basic.hibernate;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package com.jontian.hibernate;
+package basic.hibernate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
