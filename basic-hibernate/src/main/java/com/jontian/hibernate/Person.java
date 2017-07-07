@@ -2,10 +2,10 @@ package com.jontian.hibernate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
-public class Account {
+public class Person {
     @Id
     @GeneratedValue
     Long id;
@@ -16,20 +16,20 @@ public class Account {
     @Temporal(TemporalType.TIMESTAMP)
     Date birthDate;
 
-    BigDecimal balance;
+    BigDecimal money;
 
     Character gender;
 
     @Transient
-    boolean bankrupt;
+    boolean gay;
 
-    public static Account createAccount() {
-        Account acct = new Account();
+    public static Person createAccount() {
+        Person acct = new Person();
         acct.name = "Foo";
         acct.birthDate = new Date(System.currentTimeMillis());
-        acct.balance = BigDecimal.valueOf(-1);
+        acct.money = BigDecimal.valueOf(100);
         acct.gender = 'M';
-        acct.bankrupt = true;
+        acct.gay = true;
         return acct;
     }
 }
