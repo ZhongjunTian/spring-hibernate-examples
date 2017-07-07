@@ -5,7 +5,7 @@ import javax.persistence.*;
 /**
  * Created by zhongjun on 7/7/17.
  */
-//@Entity
+@Entity
 public class Phone {
     @Id
     @GeneratedValue
@@ -16,8 +16,6 @@ public class Phone {
     Long personId;
 
     @ManyToOne
-    @JoinColumn(name = "person_id"
-            //,foreignKey = @ForeignKey(name = "PERSON_ID_FK")
-    )
+    @JoinColumn(name = "personId", insertable = false, updatable = false)
     Person owner;
 }

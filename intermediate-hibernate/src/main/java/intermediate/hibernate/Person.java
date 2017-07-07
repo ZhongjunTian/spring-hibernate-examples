@@ -9,15 +9,14 @@ public class Person {
     @GeneratedValue
     Long id;
 
-    @Column(name = "address_id")
     Long addressId;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "addressId", insertable = false, updatable = false)
     Address address;
 
-//    @OneToMany(cascade = CascadeType.REMOVE)
-//    List<Phone> phones;
+    @OneToMany(cascade = CascadeType.REMOVE)
+    List<Phone> phones;
 
 
     public static Person createAccount() {
