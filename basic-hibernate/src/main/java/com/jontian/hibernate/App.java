@@ -27,8 +27,8 @@ public class App implements CommandLineRunner {
 
         //查
         Person acct = personRepository.findAll().get(0);
-        System.out.println(String.format("Person after creation: %s, %s, %s, %s, %s, %s",
-                acct.id, acct.name, acct.birthDate, acct.money, acct.gender, acct.gay));
+        System.out.println(String.format("Person after creation: %s, %s, %s, %s, %s, %s, %s",
+                acct.id, acct.name, acct.birthDate, acct.money, acct.gender, acct.gay, acct.clob));
 
         //改
         acct.name = "newName";

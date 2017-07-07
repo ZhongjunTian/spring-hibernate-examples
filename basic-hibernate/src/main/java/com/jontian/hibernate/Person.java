@@ -23,6 +23,9 @@ public class Person {
     @Transient
     boolean gay;
 
+    @Lob
+    String clob;
+
     public static Person createAccount() {
         Person acct = new Person();
         acct.name = "Foo";
@@ -30,6 +33,7 @@ public class Person {
         acct.money = BigDecimal.valueOf(100);
         acct.gender = 'M';
         acct.gay = true;
+        acct.clob = "hello world";
         return acct;
     }
 }
