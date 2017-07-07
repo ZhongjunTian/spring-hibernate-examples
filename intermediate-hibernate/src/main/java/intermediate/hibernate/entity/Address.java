@@ -1,4 +1,4 @@
-package intermediate.hibernate;
+package intermediate.hibernate.entity;
 
 import javax.persistence.*;
 
@@ -13,8 +13,6 @@ public class Address {
 
     String city;
 
-    //TODO
-//    @OneToOne(fetch = FetchType.LAZY)
-//
-//    Person person;
+    @OneToOne(mappedBy = "homeAddress", fetch = FetchType.LAZY)
+    Person person;
 }
