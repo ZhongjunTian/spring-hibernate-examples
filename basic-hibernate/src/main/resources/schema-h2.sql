@@ -3,5 +3,6 @@ CREATE TABLE Person (
 	user_name varchar(255) not null,
 	birth_date DATETIME null,
     money decimal null,
-    gender char(1) null
+    gender char(1) null,
+    clob clob null
 );
