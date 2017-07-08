@@ -15,6 +15,5 @@ public class Address {
 
     //TODO
 //    @OneToOne(fetch = FetchType.LAZY)
-//
 //    Person person;
 }
