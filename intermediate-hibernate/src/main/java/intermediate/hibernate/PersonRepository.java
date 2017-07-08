@@ -1,5 +1,6 @@
 package intermediate.hibernate;
 
+import intermediate.hibernate.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

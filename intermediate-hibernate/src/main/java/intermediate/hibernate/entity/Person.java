@@ -1,4 +1,4 @@
-package intermediate.hibernate;
+package intermediate.hibernate.entity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,9 +13,9 @@ public class Person {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "addressId", insertable = false, updatable = false)
-    Address address;
+    Address homeAddress;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.REMOVE)
     List<Phone> phones;
 
 

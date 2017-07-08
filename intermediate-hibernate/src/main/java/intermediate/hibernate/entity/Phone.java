@@ -1,4 +1,4 @@
-package intermediate.hibernate;
+package intermediate.hibernate.entity;
 
 import javax.persistence.*;
 
@@ -17,5 +17,5 @@ public class Phone {
 
     @ManyToOne
     @JoinColumn(name = "personId", insertable = false, updatable = false)
-    Person owner;
+    Person person;
 }
