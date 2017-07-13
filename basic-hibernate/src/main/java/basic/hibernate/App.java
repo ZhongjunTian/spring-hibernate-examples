@@ -21,7 +21,7 @@ public class App implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         System.out.println("Start!");
         //增
-        Person person = Person.createAccount();
+        Person person = Person.createPerson();
         personRepository.save(person);
         System.out.println();
 

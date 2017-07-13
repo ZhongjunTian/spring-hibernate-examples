@@ -26,7 +26,7 @@ public class Person {
     @Lob
     String clob;
 
-    public static Person createAccount() {
+    public static Person createPerson() {
         Person person = new Person();
         person.name = "Foo";
         person.birthDate = new Date(System.currentTimeMillis());
