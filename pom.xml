@@ -10,7 +10,8 @@
 
     <modules>
         <module>basic-hibernate</module>
-        <module>intermediate-hibernate</module>
+        <module>intermediate-hibernate-1</module>
+        <module>intermediate-hibernate-2</module>
     </modules>
 
 </project>

@@ -15,8 +15,9 @@ public class Address {
 
     public String city;
 
-    @OneToOne(mappedBy = "homeAddress", fetch = FetchType.LAZY)
-    public Person person;
+    @OneToOne
+    //@JoinColumn(name = "person_id") //默认就会认为外键为 address.person_id
+    public Person owner;
 
     public static Address createAdress(){
         Address address = new Address();

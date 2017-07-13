@@ -15,10 +15,9 @@ import org.springframework.stereotype.Service;
 public class App implements CommandLineRunner {
 
     @Autowired
-    PersonService service;
+    Demo demo;
     public void run(String... strings) throws Exception {
-       service.personWithAddress();
-       service.personWithPhones();
+       demo.personWithPhones();
     }
 
     public static void main(String args[]) {
