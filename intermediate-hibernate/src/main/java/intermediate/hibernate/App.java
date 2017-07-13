@@ -1,44 +1,24 @@
 package intermediate.hibernate;
 
-import intermediate.hibernate.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 /**
  * Created by jtian on 6/19/2017.
  */
 @SpringBootApplication
-@Component
+@Service
 public class App implements CommandLineRunner {
 
     @Autowired
-    PersonRepository personRepository;
-
+    PersonService service;
     public void run(String... strings) throws Exception {
-        System.out.println("Start!");
-        //增
-        Person person = Person.createAccount();
-        personRepository.save(person);
-        System.out.println();
-
-        //查
-        Person acct = personRepository.findAll().get(0);
-
-        //改
-        personRepository.save(acct);
-        acct = personRepository.findAll().get(0);
-        System.out.println("UserName after update: "+acct);
-
-        //删
-        personRepository.delete(acct);
-        List<Person> people = personRepository.findAll();
-        System.out.println("Size after deletion: "+ people.size());
-
+       service.personWithAddress();
+       service.personWithPhones();
     }
 
     public static void main(String args[]) {

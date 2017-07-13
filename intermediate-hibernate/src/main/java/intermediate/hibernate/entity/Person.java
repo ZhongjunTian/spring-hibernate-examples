@@ -1,27 +1,67 @@
 package intermediate.hibernate.entity;
 
+import org.springframework.core.style.ToStringCreator;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Person {
     @Id
     @GeneratedValue
-    Long id;
+    public Long id;
 
-    Long addressId;
+    public Long addressId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "addressId", insertable = false, updatable = false)
-    Address homeAddress;
+    public Address homeAddress;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.REMOVE)
-    List<Phone> phones;
+    //@OneToMany(fetch = FetchType.LAZY,  mappedBy = "person", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    public List<Phone> phones = new ArrayList<>();
 
 
-    public static Person createAccount() {
-        Person acct = new Person();
+    public static Person createPerson() {
+        Person person = new Person();
+        return person;
+    }
 
-        return acct;
+    @Override
+    public String toString() {
+        return phones.toString();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
     }
 }

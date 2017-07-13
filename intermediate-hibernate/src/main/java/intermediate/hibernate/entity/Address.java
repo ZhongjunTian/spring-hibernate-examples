@@ -1,5 +1,7 @@
 package intermediate.hibernate.entity;
 
+import org.springframework.core.style.ToStringCreator;
+
 import javax.persistence.*;
 
 /**
@@ -9,10 +11,24 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue
-    Long id;
+    public Long id;
 
-    String city;
+    public String city;
 
     @OneToOne(mappedBy = "homeAddress", fetch = FetchType.LAZY)
-    Person person;
+    public Person person;
+
+    public static Address createAdress(){
+        Address address = new Address();
+        address.city = "beijing";
+        return address;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringCreator(this)
+                .append("id", id)
+                .append("city", city)
+                .toString();
+    }
 }
