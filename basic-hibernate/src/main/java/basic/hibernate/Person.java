@@ -27,13 +27,13 @@ public class Person {
     String clob;
 
     public static Person createAccount() {
-        Person acct = new Person();
-        acct.name = "Foo";
-        acct.birthDate = new Date(System.currentTimeMillis());
-        acct.money = BigDecimal.valueOf(100);
-        acct.gender = 'M';
-        acct.gay = true;
-        acct.clob = "hello world";
-        return acct;
+        Person person = new Person();
+        person.name = "Foo";
+        person.birthDate = new Date(System.currentTimeMillis());
+        person.money = BigDecimal.valueOf(100);
+        person.gender = 'M';
+        person.gay = true;
+        person.clob = "hello world";
+        return person;
     }
 }

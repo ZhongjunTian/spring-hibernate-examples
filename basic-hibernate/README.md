@@ -12,7 +12,7 @@ Hibernate是Java世界最流行的ORM框架之一, 另一个流行的ORM框架�
 Hibernate对比Mybatis：https://www.zhihu.com/question/21104468
 Hibernate的优缺点：https://www.zhihu.com/question/21607222
 
-#3. 如何理解Hibernate的作用
+#3. Hibernate的优势
 首先ORM(Object-relational mapping) = 对象关系映射, 简单的说就是帮你写SQL查询语句里面的废话(简单重复的部分),
 
 举个栗子
@@ -24,6 +24,7 @@ CREATE TABLE PERSON (
 	address varchar(255) not null
 );
 ```
+###3.1 不用Hibernate, 用JDBC的读取数据
 那么如果你要查询数据, 没有ORM的话, 你就要写这个查询语句
 `select * from PERSON` , 并且建立JDBC连接, 执行Statement, 获取ResultSet, 并且把每一列数据从String转换成`int, double, String, Date `等, 最后放进Java的对象里面.
 那如果是UPDATE或者INSERT, 并且要连表查询呢, 那就更麻烦了, 并且代码很难复用.
@@ -56,6 +57,7 @@ public static void main(String[] args) {
         }
 }
 ```
+###3.2 用Hibernate的读取数据
 但是一旦有了Hibernate以及Spring Reposiroty, 你只要在class Person里面用java注释定义好, 那么你只用一行代码就能完成上面所有事情
 ```
 personRepository.save(person); //这么简单? 吓死本宝宝了 :)
