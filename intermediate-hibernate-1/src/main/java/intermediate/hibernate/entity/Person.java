@@ -13,16 +13,13 @@ public class Person {
     public Long id;
 
     //Person表拥有account_id，而Account表则没有person_id，这里与Address相反
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public Account account;
 
     //Address表拥有person_id
     @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
     @JoinColumn
     public Address address;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<Phone> phones = new ArrayList<>();
 
 
     public static Person createPerson() {
@@ -36,7 +33,6 @@ public class Person {
                 .append("id", id)
                 .append("account", account)
                 .append("address", address)
-                .append("phones", phones)
                 .toString();
     }
 }

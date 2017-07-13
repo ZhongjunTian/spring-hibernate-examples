@@ -18,22 +18,20 @@ public class Demo {
     @Transactional
     //one to one relationship
     public void oneToOneCascading() {
-        //
+        //先创建account
+        Account account = Account.createAccount();
+
+        //再把person绑定address
         Person person = Person.createPerson();
+        person.account = account;
+
         personRepository.save(person);
         System.out.println(person);// owner.id 会自动生成 1
         person = personRepository.findOne(1L);
+        personRepository.delete(1L);
+    }
 
-        Account account = Account.createAccount();
-        addressRepository.save(account);
-        System.out.println(account);// account.id 会自动生成 1
-
-        person.account = account;
-        personRepository.save(person);
-        System.out.println(person);
-
-        Person one = personRepository.findOne(1L);
-        System.out.println(one.toString());
+    public void oneToOneNoCascading(){
 
     }
 
