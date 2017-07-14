@@ -17,7 +17,7 @@ public class Person {
     public Account account;
 
     //Address表拥有person_id
-    @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "owner")
     @JoinColumn
     public Address address;
 

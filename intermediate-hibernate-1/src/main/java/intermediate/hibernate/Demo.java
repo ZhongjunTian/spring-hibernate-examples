@@ -14,10 +14,11 @@ public class Demo {
     @Autowired
     PersonRepository personRepository;
     @Autowired
-    AccountRepository addressRepository;
-    @Transactional
-    //one to one relationship
-    public void oneToOneCascading() {
+    AccountRepository accountRepository;
+
+    @Transactional  //one to one relationship
+    public void oneToOneCascading1() {
+        System.out.println("*******************开始");
         //先创建account
         Account account = Account.createAccount();
 
@@ -25,15 +26,64 @@ public class Demo {
         Person person = Person.createPerson();
         person.account = account;
 
-        personRepository.save(person);
-        System.out.println(person);// owner.id 会自动生成 1
-        person = personRepository.findOne(1L);
-        personRepository.delete(1L);
+        person = personRepository.save(person);
+        System.out.println("直接同时创建 person 和 account: "+person);//
     }
 
-    public void oneToOneNoCascading(){
+    @Transactional
+    public void oneToOneCascading2() {
+        System.out.println("*******************开始");
+        //创建account
+        Account account = Account.createAccount();
+        account = accountRepository.save(account);
+
+        System.out.println("先创建account: "+account);//
+        //把person绑定address
+        Person person = Person.createPerson();
+        person.account = account;
+
+        person = personRepository.save(person);
+        System.out.println("再创建person, 同时绑定了前面的address: "+person);//
+    }
+
+    @Transactional
+    public void oneToOneNocascading1() {
+        System.out.println("*******************开始");
+        //把person绑定address
+        Person person = Person.createPerson();
+        person = personRepository.save(person);
+        System.out.println("先创建person: "+person);//
+
+        //创建account
+        Account account = Account.createAccount();
+        account = accountRepository.save(account);
+        System.out.println("再创建account: "+account);//
+
+        person.account = account;
+        person = personRepository.save(person);
+        System.out.println("再更新person: "+person);//
 
     }
+
+
+    @Transactional
+    public void oneToOneNoCascading2() {
+        System.out.println("*******************开始");
+        //把person绑定address
+        Person person = Person.createPerson();
+        person = personRepository.save(person);
+        System.out.println("先创建person: "+person);//
+
+        //创建account
+        Account account = Account.createAccount();
+        account = accountRepository.save(account);
+        System.out.println("再创建account: "+account);//
+
+        person.account = account;
+        person = personRepository.save(person);
+        System.out.println("再更新person: "+person);//
+    }
+
 
 }
 

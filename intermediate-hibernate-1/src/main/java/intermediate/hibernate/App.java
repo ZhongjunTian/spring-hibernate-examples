@@ -16,8 +16,12 @@ public class App implements CommandLineRunner {
 
     @Autowired
     Demo demo;
+
     public void run(String... strings) throws Exception {
-       demo.oneToOneCascading();
+        demo.oneToOneCascading1();
+        demo.oneToOneCascading2();
+        demo.oneToOneNocascading1();
+        demo.oneToOneNoCascading2();
     }
 
     public static void main(String args[]) {
