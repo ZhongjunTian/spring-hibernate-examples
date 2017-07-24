@@ -7,7 +7,7 @@ import javax.persistence.*;
 /**
  * Created by zhongjun on 7/7/17.
  */
-@Entity
+@Entity(name = "AddressTable")
 public class Address {
     @Id
     @GeneratedValue
@@ -16,7 +16,7 @@ public class Address {
     public String city;
 
     @OneToOne
-    //@JoinColumn(name = "person_id") //默认就会认为外键为 address.person_id
+    @JoinColumn(name = "person_id") //如果没有这个就会认为外键为 PersonTable 表的 owner_id列
     public Person owner;
 
     public static Address createAdress(){

@@ -6,17 +6,18 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name="PersonTable")
 public class Person {
     @Id
     @GeneratedValue
     public Long id;
 
-    //Person表拥有account_id，而Account表则没有person_id，这里与Address相反
+    public String name;
+    //PersonTable表拥有account_id，而AccountTable表则没有person_id，这里与Address相反
     @OneToOne(cascade = CascadeType.ALL)
     public Account account;
 
-    //Address表拥有person_id
+    //AddressTable表拥有person_id
     @OneToOne(mappedBy = "owner")
     @JoinColumn
     public Address address;

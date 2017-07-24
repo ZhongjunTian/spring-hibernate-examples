@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 /**
  * Created by jtian on 7/13/2017.
  */
-@Entity
+@Entity(name = "AccountTable")
 public class Account {
     @Id
     @GeneratedValue
