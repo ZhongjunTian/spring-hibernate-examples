@@ -183,25 +183,5 @@ public class Demo {
 
     }
 
-
-    @Transactional
-    public void oneToOneNoCascading2() {
-        System.out.println("*******************开始");
-        //把person绑定address
-        Person person = Person.createPerson();
-        person = personRepository.save(person);
-        System.out.println("先创建person: "+person);//
-
-        //创建account
-        Account account = Account.createAccount();
-        account = accountRepository.save(account);
-        System.out.println("再创建account: "+account);//
-
-        person.account = account;
-        person = personRepository.save(person);
-        System.out.println("再更新person: "+person);//
-    }
-
-
 }
 ```
